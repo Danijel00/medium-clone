@@ -1,0 +1,79 @@
+<ng-container>
+  @if(currentUser$ | async; as user) {
+  <nav class="navbar navbar-light">
+    <div class="flex flex-jcsb flex-aic container">
+      <a routerLink="/" class="navbar-logo">Medium.</a>
+      <ul class="flex navbar__nav">
+        <li class="navbar__nav-item">
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="navbar__nav-link flex flex-aic"
+          >
+            <svg>
+              <use [attr.href]="iconPath + '#home'"></use>
+            </svg>
+            Home
+          </a>
+        </li>
+
+        <!-- Links for logged in users -->
+        <ng-container>
+          @if (user) {
+          <li class="navbar__nav-item">
+            <a
+              routerLink="/articles/new"
+              routerLinkActive="active"
+              class="navbar__nav-link flex flex-aic"
+            >
+              <svg>
+                <use [attr.href]="iconPath + '#note'"></use>
+              </svg>
+              New Post
+            </a>
+          </li>
+          <li class="navbar__nav-item">
+            <a
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="navbar__nav-link flex flex-aic"
+            >
+              <svg>
+                <use [attr.href]="iconPath + '#setting'"></use>
+              </svg>
+              Settings
+            </a>
+          </li>
+          <li class="navbar__nav-item">
+            <!-- custom url -->
+            <a
+              [routerLink]="['/profiles', user.username]"
+              routerLinkActive="active"
+              class="navbar__nav-link flex flex-aic"
+            >
+              <svg>
+                <use [attr.href]="iconPath + '#user'"></use>
+              </svg>
+              {{ user.username }}
+            </a>
+          </li>
+          }
+        </ng-container>
+
+        <!-- Links for not logged in users -->
+        <ng-container>
+          @if (user === null) {
+            <li class="navbar__nav-item">
+              <a routerLink="/login" class="navbar__nav-link">Sign in</a>
+            </li>
+            <li class="navbar__nav-item">
+              <a routerLink="/register" class="navbar__nav-link">Sign up</a>
+            </li>
+          }
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+  }
+</ng-container>

@@ -1,0 +1,58 @@
+<ng-container>
+  @if (data$ | async; as data) {
+  <div class="form flex">
+    <div class="form__left"></div>
+    <div class="form__right">
+      <form
+        class="flex flex-col form__box"
+        [formGroup]="form"
+        (submit)="onSubmit()"
+      >
+        <h1 class="heading">Sign in</h1>
+        @if (data.backendErrors) {
+          <mc-backend-error-message [backendErrors]="data.backendErrors">
+          </mc-backend-error-message>
+        }
+
+        <div class="flex flex-col">
+          <label for="email">Email</label>
+          <input
+            required
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="password">Password</label>
+          <input
+            required
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="btn btn-login"
+            [disabled]="data.isSubmitting"
+            [ngStyle]="{
+              'background-color': data.isSubmitting
+                ? 'var(--color-blue-alt)'
+                : 'var(--color-blue)'
+            }"
+          >
+            Login
+          </button>
+        </div>
+        <a class="redirect" routerLink="/register">Don't have an account?</a>
+      </form>
+    </div>
+  </div>
+  }
+</ng-container>
