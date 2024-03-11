@@ -5,10 +5,12 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <div class="spinner">
-      <svg>
-        <use [attr.href]="iconPath + '#icon-loader'"></use>
-      </svg>
+    <div class="wrapper">
+      <div class="spinner">
+        <svg>
+          <use [attr.href]="iconPath + '#icon-loader'"></use>
+        </svg>
+      </div>
     </div>
   `,
   styleUrl: './loading.component.scss'

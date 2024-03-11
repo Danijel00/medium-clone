@@ -9,9 +9,11 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 // Reducers
 import { authFeatureKey, authReducer } from './auth/store/reducers';
 import { feedFeatureKey, feedReducer } from './shared/components/feed/store/reducers';
+import { popularTagsFeatureKey, popularTagsReducer } from './shared/components/popular-tags/store/reducers';
 // Effects
 import * as authEffects from './auth/store/effects'
 import * as feedEffects from './shared/components/feed/store/effects'
+import * as popularTagsEffects from './shared/components/popular-tags/store/effects'
 // Interceptors
 import { authInterceptor } from './shared/services/interceptors/auth.interceptor';
 
@@ -25,9 +27,11 @@ export const appConfig: ApplicationConfig = {
     }),
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
+    provideState(popularTagsFeatureKey, popularTagsReducer),
     provideEffects(
       authEffects,
-      feedEffects
+      feedEffects,
+      popularTagsEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
@@ -37,6 +41,6 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75,
     }),
     provideRouterStore(),
-    provideEffects()
+    provideEffects(),
   ]
 };

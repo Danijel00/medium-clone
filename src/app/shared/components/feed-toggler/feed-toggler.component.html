@@ -1,0 +1,47 @@
+<div class="feed-toggler">
+  <ul class="nav flex">
+    @if (currentUser$ | async) {
+    <li class="nav__item">
+      <a
+        routerLink="/feed"
+        class="nav__item-link flex flex-aic"
+        routerLinkActive="active"
+      >
+        <span class="nav__item-icon">
+          <!-- <svg>
+            <use [attr.href]="iconPath + '#user'"></use>
+          </svg> -->
+        </span>
+        <span>Your Feed</span>
+      </a>
+    </li>
+    }
+    <li class="nav__item">
+      <a
+        routerLink="/"
+        class="nav__item-link flex flex-aic"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        queryParamsHandling="merge"
+      >
+        <span class="nav__item-icon">
+          <!-- <svg>
+            <use [attr.href]="iconPath + '#global'"></use>
+          </svg> -->
+        </span>
+        <span>Global Feed</span>
+      </a>
+    </li>
+    @if (tagName){
+      <li class="nav__item">
+        <a
+          [routerLink]="['/tags', tagName]"
+          class="nav__item-link"
+          routerLinkActive="active"
+        >
+          #{{ tagName }}
+        </a>
+      </li>
+    }
+  </ul>
+</div>

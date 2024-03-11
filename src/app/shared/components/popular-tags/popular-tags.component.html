@@ -1,0 +1,23 @@
+@if (data$ | async; as data) {
+<ng-container>
+  @if (data.isLoading) {
+    <mc-loading></mc-loading>
+  } @if (data.error) {
+    <mc-error-message [message]="data.error"></mc-error-message>
+  }
+  @if (data.popularTags) {
+    <div class="sidebar">
+      <p>Popular tags</p>
+      <div class="sidebar__tags flex">
+        <a
+          class="sidebar__tags-tag"
+          [routerLink]="['/tags', popularTag]"
+          *ngFor="let popularTag of data.popularTags"
+        >
+          #{{ popularTag }}
+        </a>
+      </div>
+    </div>
+  }
+</ng-container>
+}

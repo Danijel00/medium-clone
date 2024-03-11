@@ -7,7 +7,10 @@ import { authActions } from './auth/store/actions';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TopBarComponent],
+  imports: [
+    RouterOutlet,
+    TopBarComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

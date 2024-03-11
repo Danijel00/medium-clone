@@ -1,0 +1,45 @@
+.nav {
+  gap: 1rem;
+
+  &__item {
+    position: relative;
+    padding: 1rem 0;
+
+    &::after {
+      @extend %line-decoration;
+      background-color: rgba(0, 0, 0, 0.25);
+      z-index: 1;
+    }
+    .active::after {
+      @extend %line-decoration;
+      background-color: #5467e1;
+      z-index: 2;
+    }
+
+    .active {
+      color: var(--color-blue);
+      font-weight: 600;
+    }
+
+    &-link {
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+    }
+
+    &-icon {
+      svg {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+}
+
+%line-decoration {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+}

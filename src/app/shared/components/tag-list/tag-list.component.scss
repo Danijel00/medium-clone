@@ -1,0 +1,11 @@
+.tag__list {
+  gap: 1rem;
+
+  &-item {
+    padding: 0.45rem 0.75rem;
+    // background-color: var(--color-blue-alt);
+    border: 1px solid var(--color-blue-alt);
+    border-radius: 5px;
+    color: #000;
+  }
+}

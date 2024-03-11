@@ -38,21 +38,23 @@
           ></mc-add-to-favorites> -->
         </div>
       </div>
-      <a [routerLink]="['/articles', article.slug]" class="preview-link">
-        <h2>{{ article.title }}</h2>
-        <p>{{ article.description }}</p>
+      <a [routerLink]="['/articles', article.slug]" class="preview__link">
+        <h2 class="preview__link-title">{{ article.title }}</h2>
+        <p class="preview__link-description">{{ article.description }}</p>
         <div class="flex flex-aic flex-jcsb">
           <span>Read more...</span>
-          <!-- <mc-tag-list [tags]="article.tagList"></mc-tag-list> -->
+          <mc-tag-list [tags]="article.tagList"></mc-tag-list>
         </div>
       </a>
     </div>
-    <!-- <mc-pagination
-      [totalPages]="data.feed.articlesCount"
-      [pageLimit]="pageLimit"
-      [url]="baseUrl"
-      [currentPage]="currentPage"
-    ></mc-pagination> -->
+    @if (data.feed.articlesCount > 0) {
+      <mc-pagination
+        [totalPages]="data.feed.articlesCount"
+        [pageLimit]="pageLimit"
+        [url]="baseUrl"
+        [currentPage]="currentPage"
+      ></mc-pagination>
+    }
   </div>
   }
 </ng-container>

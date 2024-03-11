@@ -1,11 +1,20 @@
-<!-- <ul class="pagination flex">
+<ul class="pagination flex">
   <li
     class="page-item"
-    *ngFor="let page of pages"
+    *ngFor="
+      let page of pages
+        | paginate : { itemsPerPage: 10, currentPage: currentPage }
+    "
     [ngClass]="{ active: currentPage === page }"
   >
-    <a [routerLink]="url" routerLinkActive="active" class="page-link" [queryParams]="{ page: page }">
-      {{ page }}
-    </a>
   </li>
-</ul> -->
+</ul>
+<div class="">
+  <pagination-controls
+    [routerLink]="url"
+    routerLinkActive="active"
+    (pageChange)="currentPage = $event"
+    [queryParams]="{ page: currentPage }"
+    class="page-link"
+  ></pagination-controls>
+</div>

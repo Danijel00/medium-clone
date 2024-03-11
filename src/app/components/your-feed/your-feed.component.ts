@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FeedComponent } from '../../shared/components/feed/feed.component';
 import { BannerComponent } from '../../shared/components/helpers/banner/banner.component';
@@ -6,17 +5,17 @@ import { PopularTagsComponent } from '../../shared/components/popular-tags/popul
 import { FeedTogglerComponent } from '../../shared/components/feed-toggler/feed-toggler.component';
 
 @Component({
-  selector: 'mc-global-feed',
+  selector: 'mc-your-feed',
   standalone: true,
   imports: [
-    CommonModule,
     FeedComponent,
     BannerComponent,
     PopularTagsComponent,
-    FeedTogglerComponent
+    FeedTogglerComponent,
   ],
-  templateUrl: './global-feed.component.html',
+  templateUrl: './your-feed.component.html',
+  styleUrl: './your-feed.component.scss'
 })
-export class GlobalFeedComponent {
-  apiUrl: string = '/articles';
+export class YourFeedComponent {
+  apiUrl = '/articles/feed'
 }
