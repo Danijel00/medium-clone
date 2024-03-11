@@ -8,8 +8,10 @@ import { provideEffects } from '@ngrx/effects';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 // Reducers
 import { authFeatureKey, authReducer } from './auth/store/reducers';
+import { feedFeatureKey, feedReducer } from './shared/components/feed/store/reducers';
 // Effects
 import * as authEffects from './auth/store/effects'
+import * as feedEffects from './shared/components/feed/store/effects'
 // Interceptors
 import { authInterceptor } from './shared/services/interceptors/auth.interceptor';
 
@@ -22,7 +24,11 @@ export const appConfig: ApplicationConfig = {
       router: routerReducer
     }),
     provideState(authFeatureKey, authReducer),
-    provideEffects(authEffects),
+    provideState(feedFeatureKey, feedReducer),
+    provideEffects(
+      authEffects,
+      feedEffects
+    ),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

@@ -10,5 +10,10 @@ export const appRoutes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./auth/auth.routes').then((m) => m.loginRoutes),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./components/global-feed/global-feed.routes').then((m) => m.globalFeedRoutes),
   }
 ];

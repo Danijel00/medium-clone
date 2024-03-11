@@ -29,7 +29,7 @@ export const registerEffect = createEffect((
         catchError((errorResponse: HttpErrorResponse) => {
           // Return if user registration has failed
           return of(
-            authActions.registerFailed({
+            authActions.registerFailure({
               errors: errorResponse.error.errors
             })
           )
@@ -72,7 +72,7 @@ export const loginEffect = createEffect((
         catchError((errorResponse: HttpErrorResponse) => {
           // Return if user registration has failed
           return of(
-            authActions.loginFailed({
+            authActions.loginFailure({
               errors: errorResponse.error.errors
             })
           )
@@ -108,7 +108,7 @@ export const getCurrentUserEffect = createEffect((
       const token = persistanceService.get('accessToken');
 
       // If token is removed
-      if (!token) return of(authActions.getCurrentUserFailed())
+      if (!token) return of(authActions.getCurrentUserFailure())
 
       return authService.getCurrentUser().pipe(
         map((currentUser: CurrentUserInterface) => {
@@ -116,7 +116,7 @@ export const getCurrentUserEffect = createEffect((
         }),
         catchError(() => {
           return of(
-            authActions.getCurrentUserFailed()
+            authActions.getCurrentUserFailure()
           )
         })
       )
