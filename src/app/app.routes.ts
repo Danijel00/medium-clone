@@ -26,5 +26,20 @@ export const appRoutes: Routes = [
     path: 'tags/:slug',
     loadChildren: () =>
       import('./components/tag-feed/tag-feed.routes').then((m) => m.tagFeedRoutes),
-  }
+  },
+  {
+    path: 'articles/new',
+    loadChildren: () =>
+      import('./components/article/components/create-article/create-article.routes').then((m) => m.createArticleRoutes),
+  },
+  {
+    path: 'articles/:slug',
+    loadChildren: () =>
+      import('./components/article/article.routes').then((m) => m.articleRoutes)
+  },
+  {
+    path: 'articles/:slug/edit',
+    loadChildren: () =>
+      import('./components/article/components/edit-article/edit-article.routes').then((m) => m.editArticleRoutes),
+  },
 ];

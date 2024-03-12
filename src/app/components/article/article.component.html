@@ -1,0 +1,66 @@
+@if(data$ | async; as data) {
+<ng-container>
+  <div class="article">
+    <div class="article-banner">
+      @if(data.article) {
+        <div class="container">
+          <h1 class="article-heading">{{ data.article.title }}</h1>
+          <div class="article__meta flex flex-aic">
+            <a [routerLink]="['/profiles', data.article.author.username]">
+              <img
+                class="article__meta-image"
+                [src]="data.article.author.image"
+                [alt]="data.article.title"
+              />
+            </a>
+            <div class="article__info">
+              <a
+                class="article__info-name"
+                [routerLink]="['/profiles', data.article.author.username]"
+              >
+                {{ data.article.author.username }}
+              </a>
+              <span class="data">
+                {{ data.article.createdAt }}
+              </span>
+            </div>
+
+            @if(data.isAuthor) {
+              <button class="btn btn-edit">
+                <a [routerLink]="['/articles', data.article.slug, 'edit']">
+                  Edit Article
+                </a>
+                <svg>
+                  <use [attr.href]="iconPath + '#edit'"></use>
+                </svg>
+              </button>
+              <button class="btn btn-delete" (click)="deleteArticle()">
+                Delete Article
+                <svg>
+                  <use [attr.href]="iconPath + '#delete'"></use>
+                </svg>
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+    <div class="container">
+      @if(data.isLoading) {
+        <mc-loading></mc-loading>
+      }
+      @if(data.error) {
+        <mc-error-message></mc-error-message>
+      }
+      @if(data.article){
+        <div class="article__content">
+          <div class="col-xs-12">
+            <p>{{ data.article.body }}</p>
+            <mc-tag-list [tags]="data.article.tagList"></mc-tag-list>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</ng-container>
+}

@@ -1,0 +1,52 @@
+<div class="editor-page">
+  <div class="container">
+    <div class="form">
+      <form
+        class="form__box flex flex-col"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        @if (errors) {
+        <mc-backend-error-message
+          [backendErrors]="errors"
+        ></mc-backend-error-message>
+        }
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__group-input"
+            placeholder="Article title"
+            formControlName="title"
+          />
+        </div>
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__group-input"
+            placeholder="Article description"
+            formControlName="description"
+          />
+        </div>
+        <div class="form__group">
+          <textarea
+            class="form__group-input"
+            rows="8"
+            placeholder="Write your article (in markdown)"
+            formControlName="body"
+          ></textarea>
+        </div>
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__group-input"
+            placeholder="Enter tags"
+            formControlName="tagList"
+          />
+        </div>
+        <div>
+          <button type="submit" class="btn">Publish Article</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -13,5 +13,5 @@ import { Component } from "@angular/core";
   styleUrl: './banner.component.scss'
 })
 export class BannerComponent {
-
+  
 }

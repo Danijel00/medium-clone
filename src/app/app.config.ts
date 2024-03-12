@@ -17,7 +17,9 @@ import * as popularTagsEffects from './shared/components/popular-tags/store/effe
 // Interceptors
 import { authInterceptor } from './shared/services/interceptors/auth.interceptor';
 
-// TODO GO BACK TO AUTH STORE TO ADD FOR LOGOUT AND CURRENT USER
+// TODO GO BACK TO AUTH STORE TO ADD FOR LOGOUT AND CURRENT USER,
+// TODO Add to Your feed text if it's empty,
+// TODO Update article__meta css edit, delete btns,
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),

@@ -1,0 +1,82 @@
+.article {
+  &-heading {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  &-banner {
+    background-color: #333;
+    padding: 5rem 0;
+    margin-top: 4.5rem;
+  }
+
+  &__meta {
+    column-gap: 0.5rem;
+
+    &-image {
+      border-radius: 50%;
+      width: 4rem;
+    }
+
+    .btn {
+      height: 2rem;
+      border: 1px solid #ccc;
+      width: auto;
+      padding: 1.2rem;
+      border-radius: 3px;
+      background: none;
+      display: inline-flex;
+      align-items: center;
+      column-gap: 5px;
+      cursor: pointer;
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &-edit {
+        background-color: var(--color-blue-alt);
+        color: #fff;
+
+        &:hover {
+          background-color: var(--color-blue);
+        }
+        a {
+          text-decoration: none;
+          color: currentColor;
+        }
+      }
+      &-delete {
+        background-color: crimson;
+        color: #fff;
+
+         &:hover {
+          background-color: rgb(224, 96, 122);
+        }
+      }
+    }
+  }
+
+  &__info {
+    color: #fff;
+    margin-right: 0.85rem;
+
+    &-name {
+      color: var(--color-blue);
+      text-decoration: none;
+    }
+  }
+
+  &__content {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    p {
+      line-height: 1.5;
+      color: #444;
+      margin-bottom: 2rem;
+    }
+  }
+}

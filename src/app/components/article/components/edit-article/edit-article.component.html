@@ -1,0 +1,15 @@
+@if (data$ | async; as data) {
+<ng-container>
+  @if (data.isLoading) {
+    <mc-loading></mc-loading>
+  }
+  @if(data.initialValues) {
+    <mc-article-form
+      [initialValues]="data.initialValues"
+      [isSubmitting]="data.isSubmitting"
+      [errors]="data.backendErrors"
+      (articleSubmit)="onSubmit($event)"
+    ></mc-article-form>
+  }
+</ng-container>
+}
