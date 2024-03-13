@@ -1,0 +1,16 @@
+<button
+  (click)="handleClick()"
+  class="flex flex-aic"
+  [ngClass]="{
+    btn: true,
+    'btn-active': isFavorited,
+    'btn-not': !isFavorited
+  }"
+>
+  <div class="flex flex-aic flex-jcc">
+    <svg>
+      <use [attr.href]="iconPath + '#heart'"></use>
+    </svg>
+    <span>{{ favoritesCount }}</span>
+  </div>
+</button>

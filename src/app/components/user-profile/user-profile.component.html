@@ -1,0 +1,51 @@
+@if (data$ | async; as data) {
+<ng-container>
+  @if (data.userProfile) {
+  <div class="banner">
+    <div class="flex flex-col flex-aic user__profile">
+      <img class="user__profile-img" [src]="data.userProfile.image" alt="" />
+      <h4>{{ data.userProfile.username }}</h4>
+      <p class="user__profile-bio">{{ data.userProfile.bio }}</p>
+      <div class="user__profile-btns flex flex-aic">
+        <!-- <mc-follow-profile
+          [isFollowing]="data.userProfile.following"
+          [userProfile]="data.userProfile.username"
+        >
+        </mc-follow-profile> -->
+        @if (data.isCurrentUserProfile) {
+          <a routerLink="/settings" class="user__profile-btn user__profile-edit"
+            >Edit Profile Settings</a
+          >
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <ul class="nav flex">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/profiles', data.userProfile.username]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          My Posts
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/profiles', data.userProfile.username, 'favorites']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Favorites Posts
+        </a>
+      </li>
+    </ul>
+    <mc-feed [apiUrl]="getApiUrl()"></mc-feed>
+  </div>
+  }
+</ng-container>
+}

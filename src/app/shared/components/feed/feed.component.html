@@ -18,7 +18,7 @@
           class="article__meta-image"
           [routerLink]="['/profiles', article.author.username]"
         >
-          <img [src]="article.author.image" [alt]="article.author.image" />
+          <img [src]="article.author.image" [alt]="article.author.username" />
         </a>
         <div class="info flex flex-col">
           <a
@@ -36,6 +36,11 @@
             [articleSlug]="article.slug"
             [favoritesCount]="article.favoritesCount"
           ></mc-add-to-favorites> -->
+          <mc-add-to-favorites
+            [isFavorited]="article.favorited"
+            [articleSlug]="article.slug"
+            [favoritesCount]="article.favoritesCount"
+          ></mc-add-to-favorites>
         </div>
       </div>
       <a [routerLink]="['/articles', article.slug]" class="preview__link">

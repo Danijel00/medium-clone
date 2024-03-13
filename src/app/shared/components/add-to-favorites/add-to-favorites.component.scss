@@ -1,0 +1,38 @@
+.btn {
+  font-weight: normal;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 2px solid var(--color-blue);
+  background: transparent;
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
+  width: 4rem;
+
+  &:hover {
+    color: #fff;
+    background-color: var(--color-blue);
+    cursor: pointer;
+  }
+
+  &-active {
+    background-color: var(--color-blue);
+    color: #fff;
+    outline: 1px solid var(--color-blue);
+    outline-offset: 1px;
+  }
+
+  &-not {
+    color: var(--color-blue);
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 3px;
+  }
+
+  span {
+    line-height: normal;
+  }
+}

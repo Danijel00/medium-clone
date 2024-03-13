@@ -14,8 +14,10 @@ import { popularTagsFeatureKey, popularTagsReducer } from './shared/components/p
 import * as authEffects from './auth/store/effects'
 import * as feedEffects from './shared/components/feed/store/effects'
 import * as popularTagsEffects from './shared/components/popular-tags/store/effects'
+import * as addToFavoritesEffects from './shared/components/add-to-favorites/store/effects'
 // Interceptors
 import { authInterceptor } from './shared/services/interceptors/auth.interceptor';
+import { AddToFavoritesService } from './shared/components/add-to-favorites/services/add-to-favorites.service';
 
 // DONE GO BACK TO AUTH STORE TO ADD FOR LOGOUT AND CURRENT USER,
 // TODO Add to Your feed text if it's empty,
@@ -35,7 +37,8 @@ export const appConfig: ApplicationConfig = {
     provideEffects(
       authEffects,
       feedEffects,
-      popularTagsEffects
+      popularTagsEffects,
+      addToFavoritesEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
@@ -46,5 +49,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideRouterStore(),
     provideEffects(),
+    AddToFavoritesService
   ]
 };
