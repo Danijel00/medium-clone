@@ -6,6 +6,7 @@ import { AuthResponseInterface } from '../types/authResponse.interface'
 import { LoginRequestInterface } from '../types/loginRequest.interface'
 import { CurrentUserInterface } from '../../shared/types/currentUser.interface'
 import { environment } from '../../../environments/environment.development'
+import { CurrentUserRequestInterface } from '../../shared/types/currentUserRequest.interface'
 
 @Injectable({
   providedIn: 'root',
@@ -18,30 +19,29 @@ export class AuthService {
   }
 
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-    const url = environment.API_URL + '/users'
+    const fullUrl = `${environment.API_URL}/users`
     return this.http
-      .post<AuthResponseInterface>(url, data)
+      .post<AuthResponseInterface>(fullUrl, data)
       .pipe(map(this.getUser))
   }
 
   login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
-    const url = environment.API_URL + '/users/login'
+    const fullUrl = `${environment.API_URL}/users/login`
     return this.http
-      .post<AuthResponseInterface>(url, data)
+      .post<AuthResponseInterface>(fullUrl, data)
       .pipe(map(this.getUser))
   }
 
   getCurrentUser(): Observable<CurrentUserInterface> {
-    const url = environment.API_URL + '/user'
-    return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser))
+    const fullUrl = `${environment.API_URL}/user`
+    return this.http.get<AuthResponseInterface>(fullUrl).pipe(map(this.getUser))
   }
 
-  // updateCurrentUser(
-  //   currentUserRequest: CurrentUserRequestInterface
-  // ): Observable<CurrentUserInterface> {
-  //   const url = environment.apiUrl + '/user'
-  //   return this.http
-  //     .put<AuthResponseInterface>(url, currentUserRequest)
-  //     .pipe(map(this.getUser))
-  // }
+  updateCurrentUser(
+    currentUserRequest: CurrentUserRequestInterface
+  ): Observable<CurrentUserInterface> {
+    const fullUrl = `${environment.API_URL}/user`
+    return this.http.put<AuthResponseInterface>(fullUrl, currentUserRequest)
+      .pipe(map(this.getUser))
+  }
 }

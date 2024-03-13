@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { selectCurrentUser } from '../../../auth/store/reducers';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'mc-top-bar',
@@ -13,7 +14,13 @@ import { selectCurrentUser } from '../../../auth/store/reducers';
 })
 export class TopBarComponent {
   public iconPath: any = 'assets/svg/icons.svg';
-  currentUser$ = this.store.select(selectCurrentUser)
 
   constructor(private store: Store) { }
+
+  data$ = combineLatest({
+    currentUser: this.store.select(selectCurrentUser)
+  })
 }
+
+
+

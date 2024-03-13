@@ -1,0 +1,75 @@
+@if(data$ | async; as data) {
+<ng-container>
+  @if (currentUser) {
+  <div class="settings-page">
+    <div class="container">
+      <div class="form">
+        <form
+          class="form__box flex flex-col"
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+        >
+          @if (data.backendErrors) {
+          <mc-backend-error-message
+            [backendErrors]="data.backendErrors"
+          ></mc-backend-error-message>
+          }
+          <div class="form__group">
+            <input
+              type="text"
+              class="form__group-input"
+              formControlName="image"
+              placeholder="URL of profile picture"
+            />
+          </div>
+          <div class="form__group">
+            <input
+              type="text"
+              class="form__group-input"
+              formControlName="username"
+              placeholder="Username"
+            />
+          </div>
+          <div class="form__group">
+            <textarea
+              class="form__group-input"
+              formControlName="bio"
+              rows="8"
+              placeholder="Short bio about you"
+            ></textarea>
+          </div>
+          <div class="form__group">
+            <input
+              type="text"
+              class="form__group-input"
+              formControlName="email"
+              placeholder="Email"
+            />
+          </div>
+          <div class="form__group">
+            <input
+              type="password"
+              class="form__group-input"
+              formControlName="password"
+              placeholder="New password"
+            />
+          </div>
+          <div class="form__btn flex flex-jcsb">
+            <button
+              type="submit"
+              class="btn form__btn-update"
+              [disabled]="form.invalid || data.isSubmitting"
+            >
+              Update settings
+            </button>
+            <button class="btn form__btn-logout" (click)="logout()">
+              Or click here to logout
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  }
+</ng-container>
+}

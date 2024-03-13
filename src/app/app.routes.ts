@@ -42,4 +42,9 @@ export const appRoutes: Routes = [
     loadChildren: () =>
       import('./components/article/components/edit-article/edit-article.routes').then((m) => m.editArticleRoutes),
   },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('./components/settings/settings.routes').then((m) => m.settingsRoutes)
+  }
 ];

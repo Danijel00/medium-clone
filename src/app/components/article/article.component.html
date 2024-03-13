@@ -13,7 +13,7 @@
                 [alt]="data.article.title"
               />
             </a>
-            <div class="article__info">
+            <div class="article__info flex flex-col">
               <a
                 class="article__info-name"
                 [routerLink]="['/profiles', data.article.author.username]"
@@ -54,7 +54,7 @@
       }
       @if(data.article){
         <div class="article__content">
-          <div class="col-xs-12">
+          <div class="">
             <p>{{ data.article.body }}</p>
             <mc-tag-list [tags]="data.article.tagList"></mc-tag-list>
           </div>

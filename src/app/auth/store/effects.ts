@@ -2,7 +2,7 @@ import { inject } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "../services/auth.service";
 import { authActions } from "./actions";
-import { EMPTY, catchError, map, of, switchMap } from "rxjs";
+import { EMPTY, catchError, map, of, switchMap, tap } from "rxjs";
 import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
 import { HttpErrorResponse } from "@angular/common/http";
 import { PersistanceService } from "../../shared/services/persistance.service";
@@ -123,3 +123,41 @@ export const getCurrentUserEffect = createEffect((
     })
   )
 }, { functional: true })
+
+// Update current user effect //
+export const updateCurrentUserEffect = createEffect((
+  actions$ = inject(Actions),
+  authService = inject(AuthService),
+) => {
+  return actions$.pipe(
+    ofType(authActions.updateCurrentUser),
+    switchMap(({ currentUserRequest }) => {
+      return authService.updateCurrentUser(currentUserRequest).pipe(
+        map((currentUser: CurrentUserInterface) => {
+          return authActions.updateCurrentUserSuccess({ currentUser })
+        }),
+        catchError((errorResponse: HttpErrorResponse) => {
+          return of(
+            authActions.updateCurrentUserFailure({
+              errors: errorResponse.error.errors,
+            })
+          )
+        })
+      )
+    })
+  )
+}, { functional: true })
+
+export const logoutEffect = createEffect((
+  actions$ = inject(Actions),
+  router = inject(Router),
+  persistanceService = inject(PersistanceService)
+) => {
+  return actions$.pipe(
+    ofType(authActions.logout),
+    tap(() => {
+      persistanceService.set('accessToken', '');
+      router.navigateByUrl('/');
+    })
+  )
+}, { functional: true, dispatch: false })

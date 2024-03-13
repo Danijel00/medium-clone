@@ -65,8 +65,24 @@ const authFeature = createFeature({
       currentUser: null
     })),
 
+    // Update Current user //
+    on(authActions.updateCurrentUserSuccess, (state, action) => ({
+      ...state,
+      currentUser: action.currentUser,
+      validationErrors: null,
+    })),
     // Clean up validation errors on route change
-    on(routerNavigatedAction, (state) => ({ ...state, validationErrors: null }))
+    on(routerNavigatedAction, (state) => ({
+      ...state,
+      validationErrors: null,
+    })),
+
+    // Logout Current user //
+    on(authActions.logout, (state) => ({
+      ...state,
+      ...initialState,
+      currentUser: null
+    }))
   )
 })
 

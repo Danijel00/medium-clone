@@ -1,5 +1,5 @@
 <ng-container>
-  @if(currentUser$ | async; as user) {
+  @if(data$ | async; as data) {
   <nav class="navbar navbar-light">
     <div class="flex flex-jcsb flex-aic container">
       <a routerLink="/" class="navbar-logo">Medium.</a>
@@ -20,7 +20,7 @@
 
         <!-- Links for logged in users -->
         <ng-container>
-          @if (user) {
+          @if (data.currentUser) {
           <li class="navbar__nav-item">
             <a
               routerLink="/articles/new"
@@ -48,14 +48,14 @@
           <li class="navbar__nav-item">
             <!-- custom url -->
             <a
-              [routerLink]="['/profiles', user.username]"
+              [routerLink]="['/profiles', data.currentUser.username]"
               routerLinkActive="active"
               class="navbar__nav-link flex flex-aic"
             >
               <svg>
                 <use [attr.href]="iconPath + '#user'"></use>
               </svg>
-              {{ user.username }}
+              {{ data.currentUser.username }}
             </a>
           </li>
           }
@@ -63,13 +63,23 @@
 
         <!-- Links for not logged in users -->
         <ng-container>
-          @if (user === null) {
-            <li class="navbar__nav-item">
-              <a routerLink="/login" class="navbar__nav-link">Sign in</a>
-            </li>
-            <li class="navbar__nav-item">
-              <a routerLink="/register" class="navbar__nav-link">Sign up</a>
-            </li>
+          @if (data.currentUser === null) {
+          <li class="navbar__nav-item">
+            <a routerLink="/login" class="navbar__nav-link flex flex-aic">
+              <svg>
+                <use [attr.href]="iconPath + '#login'"></use>
+              </svg>
+              Sign in
+            </a>
+          </li>
+          <li class="navbar__nav-item">
+            <a routerLink="/register" class="navbar__nav-link flex flex-aic">
+              <svg>
+                <use [attr.href]="iconPath + '#register'"></use>
+              </svg>
+              Sign up
+            </a>
+          </li>
           }
         </ng-container>
       </ul>
