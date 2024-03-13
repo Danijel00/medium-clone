@@ -7,5 +7,9 @@ export const userProfileActions = createActionGroup({
     'Get user profile': props<{ slug: string }>(),
     'Get user profile success': props<{ userProfile: UserProfileInterface }>(),
     'Get user profile failure': emptyProps(),
+
+    'Follow profile': props<{ isFollowing: boolean, username: string }>(),
+    'Follow profile success': props<{ userProfile: UserProfileInterface }>(),
+    'Follow profile failure': emptyProps(),
   },
 })

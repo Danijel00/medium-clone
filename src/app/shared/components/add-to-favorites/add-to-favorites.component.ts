@@ -12,12 +12,12 @@ import { addToFavoritesActions } from './store/actions';
 })
 export class AddToFavoritesComponent {
   public iconPath: any = 'assets/svg/icons.svg';
-
   @Input() isFavorited: boolean = false;
   @Input() articleSlug: string = ''
   @Input() favoritesCount: number = 0;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   handleClick(): void {
     this.store.dispatch(

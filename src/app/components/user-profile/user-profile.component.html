@@ -7,11 +7,13 @@
       <h4>{{ data.userProfile.username }}</h4>
       <p class="user__profile-bio">{{ data.userProfile.bio }}</p>
       <div class="user__profile-btns flex flex-aic">
-        <!-- <mc-follow-profile
-          [isFollowing]="data.userProfile.following"
-          [userProfile]="data.userProfile.username"
-        >
-        </mc-follow-profile> -->
+         @if (!data.isCurrentUserProfile) {
+           <mc-follow-profile
+             [isFollowing]="data.userProfile.following"
+             [userProfile]="data.userProfile.username"
+           >
+          </mc-follow-profile>
+         }
         @if (data.isCurrentUserProfile) {
           <a routerLink="/settings" class="user__profile-btn user__profile-edit"
             >Edit Profile Settings</a

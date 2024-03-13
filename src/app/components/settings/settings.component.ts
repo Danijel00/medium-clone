@@ -15,7 +15,7 @@ import { CurrentUserRequestInterface } from '../../shared/types/currentUserReque
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, BackendErrorMessageComponent],
   templateUrl: './settings.component.html',
-  styleUrl: '../../shared/scss/form.component.scss'
+  styleUrl: '../../shared/styles/form.component.scss'
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   private currentUserSub: Subscription | undefined;

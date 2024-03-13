@@ -16,7 +16,7 @@ import { BackendErrorMessageComponent } from '../backend-error-message/backend-e
     BackendErrorMessageComponent,
   ],
   templateUrl: './article-form.component.html',
-  styleUrl: '../../scss/form.component.scss'
+  styleUrl: '../../styles/form.component.scss'
 })
 export class ArticleFormComponent implements OnInit {
   @Input() initialValues?: ArticleFormValuesInterface;

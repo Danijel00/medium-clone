@@ -19,7 +19,7 @@ import { selectCurrentUser } from '../../auth/store/reducers';
     RouterLink,
     LoadingComponent,
     ErrorMessageComponent,
-    TagListComponent
+    TagListComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'

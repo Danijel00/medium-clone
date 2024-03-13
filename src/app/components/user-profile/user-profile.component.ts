@@ -9,6 +9,7 @@ import { userProfileActions } from './store/actions';
 import { combineLatest, filter, map } from 'rxjs';
 import { selectError, selectIsLoading, selectUserProfileData } from './store/reducers';
 import { selectCurrentUser } from '../../auth/store/reducers';
+import { FollowProfileComponent } from '../../shared/components/follow-profile/follow-profile.component';
 
 @Component({
   selector: 'mc-user-profile',
@@ -17,7 +18,8 @@ import { selectCurrentUser } from '../../auth/store/reducers';
     CommonModule,
     RouterLink,
     RouterLinkActive,
-    FeedComponent
+    FeedComponent,
+    FollowProfileComponent
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'

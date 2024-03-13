@@ -1,0 +1,39 @@
+.btn {
+  font-weight: normal;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 2px solid #fff;
+  background: transparent;
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+
+  &:hover {
+    color: #fff;
+    background-color: #333;
+    cursor: pointer;
+  }
+
+  &-active {
+    background-color: #333;
+    color: #fff;
+  }
+
+  &-not {
+    color: var(--color-blue);
+    color: #fff;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 3px;
+  }
+
+  span {
+    line-height: normal;
+  }
+}

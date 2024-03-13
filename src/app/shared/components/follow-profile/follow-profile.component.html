@@ -1,0 +1,24 @@
+<button
+  (click)="handleFollow()"
+  class="flex flex-aic"
+  [ngClass]="{
+    btn: true,
+    'btn-active': isFollowing,
+    'btn-not': !isFollowing
+  }"
+>
+  <div class="flex flex-aic flex-jcc">
+    @if (isFollowing) {
+      <svg>
+        <use [attr.href]="iconPath + '#remove'"></use>
+      </svg>
+    } @else {
+      <svg>
+        <use [attr.href]="iconPath + '#register'"></use>
+      </svg>
+    }
+    <span>
+      {{ follow }} {{ userProfile }}
+    </span>
+  </div>
+</button>

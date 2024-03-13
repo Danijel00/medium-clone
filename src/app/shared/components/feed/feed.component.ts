@@ -62,16 +62,13 @@ export class FeedComponent implements OnInit, OnChanges {
 
   fetchFeed() {
     const pageOffset = this.currentPage * this.pageLimit - this.pageLimit;
-    console.log(pageOffset);
     const parsedUrl = queryString.parseUrl(this.apiUrl);
-    console.log(parsedUrl);
     const stringifiedParams = queryString.stringify({
       limit: this.pageLimit,
       offset: pageOffset,
       ...parsedUrl.query
     });
     const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
-    console.log(stringifiedParams);
     this.store.dispatch(feedActions.getFeed({ url: apiUrlWithParams }))
   }
 }

@@ -25,24 +25,24 @@
               </span>
             </div>
 
-            @if(data.isAuthor) {
-              <button class="btn btn-edit">
-                <a [routerLink]="['/articles', data.article.slug, 'edit']">
-                  Edit Article
-                </a>
-                <svg>
-                  <use [attr.href]="iconPath + '#edit'"></use>
-                </svg>
-              </button>
-              <button class="btn btn-delete" (click)="deleteArticle()">
-                Delete Article
-                <svg>
-                  <use [attr.href]="iconPath + '#delete'"></use>
-                </svg>
-              </button>
-            }
-          </div>
+          @if(data.isAuthor) {
+            <button class="btn btn-edit">
+              <a [routerLink]="['/articles', data.article.slug, 'edit']">
+                Edit Article
+              </a>
+              <svg>
+                <use [attr.href]="iconPath + '#edit'"></use>
+              </svg>
+            </button>
+            <button class="btn btn-delete" (click)="deleteArticle()">
+              Delete Article
+              <svg>
+                <use [attr.href]="iconPath + '#delete'"></use>
+              </svg>
+            </button>
+          }
         </div>
+      </div>
       }
     </div>
     <div class="container">
