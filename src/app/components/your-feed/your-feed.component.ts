@@ -14,7 +14,6 @@ import { FeedTogglerComponent } from '../../shared/components/feed-toggler/feed-
     FeedTogglerComponent,
   ],
   templateUrl: './your-feed.component.html',
-  styleUrl: './your-feed.component.scss'
 })
 export class YourFeedComponent {
   apiUrl = '/articles/feed'
