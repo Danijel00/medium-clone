@@ -3,18 +3,19 @@
     class="page-item"
     *ngFor="
       let page of pages
-        | paginate : { itemsPerPage: 10, currentPage: currentPage }
+        | paginate : { itemsPerPage: 2, currentPage: currentPage }
     "
     [ngClass]="{ active: currentPage === page }"
   >
   </li>
 </ul>
-<div class="">
+<div class="pagination-controls flex flex-jcc">
   <pagination-controls
+    (pageChange)="currentPage = $event"
+    previousLabel=""
+    nextLabel=""
     [routerLink]="url"
     routerLinkActive="active"
-    (pageChange)="currentPage = $event"
     [queryParams]="{ page: currentPage }"
-    class="page-link"
   ></pagination-controls>
 </div>

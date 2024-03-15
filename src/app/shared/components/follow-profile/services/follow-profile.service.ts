@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 import { Observable, map } from 'rxjs';
-import { UserProfileInterface } from '../types/userProfile.interface';
-import { GetUserProfileResponseInterface } from '../types/getUserProfile.interface';
-import { environment } from '../../../../environments/environment.development';
+import { UserProfileInterface } from '../../../../components/user-profile/types/userProfile.interface';
+import { GetUserProfileResponseInterface } from '../../../../components/user-profile/types/getUserProfile.interface';
 
 @Injectable({
   providedIn: 'root'

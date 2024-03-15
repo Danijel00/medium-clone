@@ -1,7 +1,7 @@
 <ng-container>
   @if(data$ | async; as data) {
   <nav class="navbar navbar-light">
-    <div class="flex flex-jcsb flex-aic container">
+    <div class="flex flex-jcsb flex-aic container navbar__container">
       <a routerLink="/" class="navbar-logo">Medium.</a>
       <ul class="flex flex-aic navbar__nav">
         <li class="navbar__nav-item">
@@ -65,7 +65,11 @@
         <ng-container>
           @if (data.currentUser === null) {
           <li class="navbar__nav-item">
-            <a routerLink="/login" class="navbar__nav-link flex flex-aic">
+            <a
+              routerLink="/login"
+              class="navbar__nav-link flex flex-aic"
+              routerLinkActive="active"
+            >
               <svg>
                 <use [attr.href]="iconPath + '#login'"></use>
               </svg>
@@ -73,7 +77,11 @@
             </a>
           </li>
           <li class="navbar__nav-item">
-            <a routerLink="/register" class="navbar__nav-link flex flex-aic">
+            <a
+              routerLink="/register"
+              class="navbar__nav-link flex flex-aic"
+              routerLinkActive="active"
+            >
               <svg>
                 <use [attr.href]="iconPath + '#register'"></use>
               </svg>

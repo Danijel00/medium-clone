@@ -7,17 +7,16 @@
       <h4>{{ data.userProfile.username }}</h4>
       <p class="user__profile-bio">{{ data.userProfile.bio }}</p>
       <div class="user__profile-btns flex flex-aic">
-         @if (!data.isCurrentUserProfile) {
-           <mc-follow-profile
-             [isFollowing]="data.userProfile.following"
-             [userProfile]="data.userProfile.username"
-           >
-          </mc-follow-profile>
-         }
-        @if (data.isCurrentUserProfile) {
-          <a routerLink="/settings" class="user__profile-btn user__profile-edit"
-            >Edit Profile Settings</a
-          >
+        @if (!data.isCurrentUserProfile) {
+        <mc-follow-profile
+          [isFollowing]="data.userProfile.following"
+          [userProfile]="data.userProfile.username"
+        >
+        </mc-follow-profile>
+        } @if (data.isCurrentUserProfile) {
+        <a routerLink="/settings" class="user__profile-btn user__profile-edit"
+          >Edit Profile Settings</a
+        >
         }
       </div>
     </div>
@@ -25,24 +24,34 @@
 
   <div class="container">
     <ul class="nav flex">
-      <li class="nav-item">
+      <li class="nav__item">
         <a
-          class="nav-link"
+          class="nav__item-link flex flex-aic"
           [routerLink]="['/profiles', data.userProfile.username]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          My Posts
+          <span class="nav__item-icon">
+            <svg>
+              <use [attr.href]="iconPath + '#user'"></use>
+            </svg>
+          </span>
+          <span>My Posts</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav__item">
         <a
-          class="nav-link"
+          class="nav__item-link flex flex-aic"
           [routerLink]="['/profiles', data.userProfile.username, 'favorites']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          Favorites Posts
+          <span class="nav__item-icon">
+            <svg>
+              <use [attr.href]="iconPath + '#heart'"></use>
+            </svg>
+          </span>
+          <span>Favorited Posts</span>
         </a>
       </li>
     </ul>

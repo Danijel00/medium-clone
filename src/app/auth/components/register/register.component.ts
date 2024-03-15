@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit{
   }
 
   onSubmit() {
-    console.log(this.form.getRawValue());
     const request: RegisterRequestInterface = {
       user: this.form.getRawValue()
     }

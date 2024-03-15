@@ -10,16 +10,16 @@
   width: 4rem;
 
   &:hover {
-    color: #fff;
+    color: var(--color-white);
     background-color: var(--color-blue);
     cursor: pointer;
   }
 
   &-active {
     background-color: var(--color-blue);
-    color: #fff;
+    color: var(--color-white);
     outline: 1px solid var(--color-blue);
-    outline-offset: 1px;
+    outline-offset: 2px;
   }
 
   &-not {

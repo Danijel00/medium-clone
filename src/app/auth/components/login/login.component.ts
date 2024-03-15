@@ -20,7 +20,7 @@ import { BackendErrorMessageComponent } from '../../../shared/components/backend
     BackendErrorMessageComponent
   ],
   templateUrl: './login.component.html',
-  styleUrl: '../../auth.component.scss'
+  styleUrl: '../../auth.component.scss',
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.getRawValue());
     const request: LoginRequestInterface = {
       user: this.form.getRawValue()
     }

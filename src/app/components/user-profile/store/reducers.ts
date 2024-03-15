@@ -28,11 +28,6 @@ const userProfileFeature = createFeature({
       // TODO delete maybe
       errors: state.error
     })),
-    // on(userProfileActions.followProfileSuccess, (state, action) => ({
-    //   ...state,
-    //   isLoading: false,
-    //   data: action.userProfile
-    // })),
     on(routerNavigationAction, () => initialState)
   )
 })

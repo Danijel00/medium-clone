@@ -15,24 +15,24 @@
         </mc-backend-error-message>
         }
 
-        <div class="flex form__box-col">
-          <div class="flex flex-col flex-f1">
+        <div class="flex flex-gap">
+          <div class="form__control flex flex-col">
             <label for="username">Username</label>
             <input
               required
-              type="text"
-              class="form-control"
+              type="username"
+              class="form__control-input"
               id="username"
               placeholder="Username"
               formControlName="username"
             />
           </div>
-          <div class="flex flex-col flex-f1">
+          <div class="form__control flex flex-col">
             <label for="password">Password</label>
             <input
               required
               type="password"
-              class="form-control"
+              class="form__control-input"
               id="password"
               placeholder="Password"
               formControlName="password"
@@ -40,12 +40,12 @@
           </div>
         </div>
         <div class="flex">
-          <div class="flex flex-col flex-f1">
+          <div class="form__control flex flex-col">
             <label for="email">Email</label>
             <input
               required
               type="email"
-              class="form-control"
+              class="form__control-input"
               id="email"
               placeholder="Email"
               formControlName="email"

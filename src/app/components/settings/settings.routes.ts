@@ -1,9 +1,9 @@
 import { provideState } from '@ngrx/store';
-import { Route } from "@angular/router";
+import { Routes } from "@angular/router";
 import { SettingsComponent } from "./settings.component";
 import { settingsFeatureKey, settingsReducer } from './store/reducerts';
 
-export const settingsRoutes: Route[] = [
+export const settingsRoutes: Routes = [
   {
     path: '',
     component: SettingsComponent,

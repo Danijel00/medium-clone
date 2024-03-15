@@ -2,7 +2,7 @@ import { inject } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "../services/auth.service";
 import { authActions } from "./actions";
-import { EMPTY, catchError, map, of, switchMap, tap } from "rxjs";
+import { catchError, map, of, switchMap, tap } from "rxjs";
 import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
 import { HttpErrorResponse } from "@angular/common/http";
 import { PersistanceService } from "../../shared/services/persistance.service";
@@ -46,9 +46,8 @@ export const redirectAfterRegistrationEffect = createEffect((
 ) => {
   return actions$.pipe(
     ofType(authActions.registerSuccess),
-    switchMap(() => {
+    tap(() => {
       router.navigateByUrl('/');
-      return EMPTY;
     })
   )
 }, { functional: true, dispatch: false })
@@ -89,9 +88,8 @@ export const redirectAfterLoginEffect = createEffect((
 ) => {
   return actions$.pipe(
     ofType(authActions.loginSuccess),
-    switchMap(() => {
+    tap(() => {
       router.navigateByUrl('/');
-      return EMPTY;
     })
   )
 }, { functional: true, dispatch: false })
@@ -157,6 +155,7 @@ export const logoutEffect = createEffect((
     ofType(authActions.logout),
     tap(() => {
       persistanceService.set('accessToken', '');
+      localStorage.removeItem('accessToken');
       router.navigateByUrl('/');
     })
   )

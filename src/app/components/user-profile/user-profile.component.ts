@@ -63,7 +63,6 @@ export class UserProfileComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      console.log(params);
       this.slug = params['slug'];
       this.fetchUserProfile();
     })

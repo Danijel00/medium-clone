@@ -1,53 +1,54 @@
 @if (data$ | async; as data) {
 <ng-container>
   @if (data.isLoading) {
-    <mc-loading></mc-loading>
+  <mc-loading></mc-loading>
   }
   @if (data.error) {
-    <mc-error-message [message]="data.error"></mc-error-message>
+    <mc-error-message mc-error-message [message]="data.error"></mc-error-message>
   }
   @if(data.feed) {
-  <div>
-    <div
-      class="article__preview"
-      *ngFor="let article of data.feed.articles; let last = last"
-      [ngClass]="{ 'article__preview-last': last }"
-    >
-      <div class="article__meta flex flex-aic">
-        <a
-          class="article__meta-image"
-          [routerLink]="['/profiles', article.author.username]"
-        >
-          <img [src]="article.author.image" [alt]="article.author.username" />
-        </a>
-        <div class="info flex flex-col">
+    <div class="article">
+      <div
+        class="article__preview"
+        *ngFor="let article of data.feed.articles; let last = last"
+        [ngClass]="{ 'article__preview-last': last }"
+      >
+        <div class="article__meta flex flex-aic">
           <a
-            class="article__meta-name"
+            class="article__meta-image"
             [routerLink]="['/profiles', article.author.username]"
           >
-            {{ article.author.username }}
+            <img [src]="article.author.image" [alt]="article.author.username" />
           </a>
-          <span class="article__meta-date">{{ article.createdAt }}</span>
+          <div class="info flex flex-col">
+            <a
+              class="article__meta-name"
+              [routerLink]="['/profiles', article.author.username]"
+            >
+              {{ article.author.username }}
+            </a>
+            <span class="article__meta-date">{{ article.createdAt }}</span>
+          </div>
+          <div class="article__meta-favorites flex flex-aic">
+            <span>ADD TO FAVORITES</span>
+            <mc-add-to-favorites
+              [isFavorited]="article.favorited"
+              [articleSlug]="article.slug"
+              [favoritesCount]="article.favoritesCount"
+            ></mc-add-to-favorites>
+          </div>
         </div>
-        <div class="article__meta-favorites flex flex-aic">
-          ADD TO FAVORITES
-          <mc-add-to-favorites
-            [isFavorited]="article.favorited"
-            [articleSlug]="article.slug"
-            [favoritesCount]="article.favoritesCount"
-          ></mc-add-to-favorites>
-        </div>
+        <a [routerLink]="['/articles', article.slug]" class="preview__link">
+          <h2 class="preview__link-title">{{ article.title }}</h2>
+          <p class="preview__link-description">{{ article.description }}</p>
+          <div class="flex flex-aic flex-jcsb">
+            <span>Read more...</span>
+            <mc-tag-list [tags]="article.tagList"></mc-tag-list>
+          </div>
+        </a>
       </div>
-      <a [routerLink]="['/articles', article.slug]" class="preview__link">
-        <h2 class="preview__link-title">{{ article.title }}</h2>
-        <p class="preview__link-description">{{ article.description }}</p>
-        <div class="flex flex-aic flex-jcsb">
-          <span>Read more...</span>
-          <mc-tag-list [tags]="article.tagList"></mc-tag-list>
-        </div>
-      </a>
-    </div>
-    @if (data.feed.articlesCount > 0) {
+
+    @if (data.feed.articlesCount > 1) {
       <mc-pagination
         [totalPages]="data.feed.articlesCount"
         [pageLimit]="pageLimit"
@@ -55,7 +56,12 @@
         [currentPage]="currentPage"
       ></mc-pagination>
     }
-  </div>
+    @if (data.feed.articlesCount < 1) {
+      <div class="article__none">
+        <p>Articles will show when you follow a user, or when you create a new article.</p>
+      </div>
+    }
+    </div>
   }
 </ng-container>
 }

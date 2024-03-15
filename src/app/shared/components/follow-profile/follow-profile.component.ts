@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store';
 import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { userProfileActions } from '../../../components/user-profile/store/actions';
+import { followProfileActions } from './store/actions';
 
 @Component({
   selector: 'mc-follow-profile',
@@ -12,16 +12,15 @@ import { userProfileActions } from '../../../components/user-profile/store/actio
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FollowProfileComponent implements OnChanges {
+  @Input() isFollowing: boolean = false;
+  @Input() userProfile: string = '';
   public iconPath: any = 'assets/svg/icons.svg';
   public follow: string = '';
   slug: string = ''
-  @Input() isFollowing: boolean = false;
-  @Input() userProfile: string = '';
 
   constructor(private store: Store) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (changes.hasOwnProperty('isFollowing')) {
       this.follow = this.isFollowing ? 'Unfollow' : 'Follow';
     }
@@ -29,7 +28,7 @@ export class FollowProfileComponent implements OnChanges {
 
   handleFollow() {
     this.store.dispatch(
-      userProfileActions.followProfile({
+      followProfileActions.followProfile({
         isFollowing: this.isFollowing,
         username: this.userProfile
       })

@@ -12,7 +12,7 @@
     }
     .active::after {
       @extend %line-decoration;
-      background-color: #5467e1;
+      background-color: var(--color-blue);
       z-index: 2;
     }
 

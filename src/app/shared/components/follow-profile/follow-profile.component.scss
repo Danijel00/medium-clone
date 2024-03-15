@@ -3,28 +3,29 @@
   white-space: nowrap;
   -webkit-user-select: none;
   user-select: none;
-  border: 2px solid #fff;
+  border: 2px solid var(--color-white);
   background: transparent;
   font-size: 0.9rem;
   border-radius: 0.25rem;
   padding: 0.5rem;
-  outline: 1px solid #fff;
-  outline-offset: 1px;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
 
   &:hover {
-    color: #fff;
-    background-color: #333;
+    background-color: var(--color-black);
+    color: var(--color-white);
     cursor: pointer;
   }
 
   &-active {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    outline: 1px solid var(--color-white);
   }
 
   &-not {
-    color: var(--color-blue);
-    color: #fff;
+    color: #333;
+    color: var(--color-white);
   }
 
   svg {

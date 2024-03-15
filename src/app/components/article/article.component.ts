@@ -10,7 +10,8 @@ import { selectArticleData, selectError, selectIsLoading } from './store/reducer
 import { articleActions } from './store/actions';
 import { combineLatest, filter, map } from 'rxjs';
 import { selectCurrentUser } from '../../auth/store/reducers';
-
+import { FollowProfileComponent } from '../../shared/components/follow-profile/follow-profile.component';
+import { AddToFavoritesComponent } from '../../shared/components/add-to-favorites/add-to-favorites.component';
 @Component({
   selector: 'mc-article',
   standalone: true,
@@ -20,6 +21,8 @@ import { selectCurrentUser } from '../../auth/store/reducers';
     LoadingComponent,
     ErrorMessageComponent,
     TagListComponent,
+    FollowProfileComponent,
+    AddToFavoritesComponent
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
@@ -55,7 +58,6 @@ export class ArticleComponent implements OnInit {
   constructor(private store: Store, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.slug);
     this.store.dispatch(articleActions.getArticle({ slug: this.slug }))
   }
 

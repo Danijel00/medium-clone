@@ -56,6 +56,5 @@ export class ArticleFormComponent implements OnInit {
       tagList: formValue.tagList.split(' '),
     }
     this.articleSubmit.next(articleFormValues)
-    console.log(formValue);
   }
 }

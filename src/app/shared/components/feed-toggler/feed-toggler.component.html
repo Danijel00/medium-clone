@@ -8,9 +8,9 @@
         routerLinkActive="active"
       >
         <span class="nav__item-icon">
-          <!-- <svg>
+          <svg>
             <use [attr.href]="iconPath + '#user'"></use>
-          </svg> -->
+          </svg>
         </span>
         <span>Your Feed</span>
       </a>
@@ -25,18 +25,18 @@
         queryParamsHandling="merge"
       >
         <span class="nav__item-icon">
-          <!-- <svg>
+          <svg>
             <use [attr.href]="iconPath + '#global'"></use>
-          </svg> -->
+          </svg>
         </span>
         <span>Global Feed</span>
       </a>
     </li>
     @if (tagName){
-      <li class="nav__item">
+      <li class="nav__item flex flex-aic">
         <a
           [routerLink]="['/tags', tagName]"
-          class="nav__item-link"
+          class="nav__item-link "
           routerLinkActive="active"
         >
           #{{ tagName }}

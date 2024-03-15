@@ -15,17 +15,12 @@ import * as authEffects from './auth/store/effects'
 import * as feedEffects from './shared/components/feed/store/effects'
 import * as popularTagsEffects from './shared/components/popular-tags/store/effects'
 import * as addToFavoritesEffects from './shared/components/add-to-favorites/store/effects'
-// import * as followProfileEffects from './shared/components/follow-profile/store/effects'
+import * as followProfileEffects from './shared/components/follow-profile/store/effects'
 // Interceptors
 import { authInterceptor } from './shared/services/interceptors/auth.interceptor';
 import { AddToFavoritesService } from './shared/components/add-to-favorites/services/add-to-favorites.service';
-import { FollowProfileService } from './components/user-profile/services/follow-profile.service';
+import { FollowProfileService } from './shared/components/follow-profile/services/follow-profile.service';
 
-// DONE GO BACK TO AUTH STORE TO ADD FOR LOGOUT AND CURRENT USER,
-// TODO Add to Your feed text if it's empty,
-// TODO Update article__meta css edit, delete btns,
-// TODO change from routes to route
-// TODO pagination css
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
@@ -41,7 +36,7 @@ export const appConfig: ApplicationConfig = {
       feedEffects,
       popularTagsEffects,
       addToFavoritesEffects,
-      // followProfileEffects
+      followProfileEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
@@ -53,6 +48,6 @@ export const appConfig: ApplicationConfig = {
     provideRouterStore(),
     provideEffects(),
     AddToFavoritesService,
-    FollowProfileService
+    FollowProfileService,
   ]
 };

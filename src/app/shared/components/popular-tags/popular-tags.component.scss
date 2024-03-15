@@ -11,11 +11,10 @@
     gap: 6px;
 
     &-tag {
-      font-size: 15px;
       padding: 0.15rem 0.3rem;
       background-color: rgba(0, 0, 0, 0.3);
       border-radius: 5px;
-      color: #fff;
+      color: var(--color-white);
       text-decoration: none;
 
       &:hover {
