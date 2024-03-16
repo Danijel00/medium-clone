@@ -10,9 +10,9 @@
           (ngSubmit)="submit()"
         >
           @if (data.backendErrors) {
-          <mc-backend-error-message
-            [backendErrors]="data.backendErrors"
-          ></mc-backend-error-message>
+            <mc-backend-error-message
+              [backendErrors]="data.backendErrors"
+            ></mc-backend-error-message>
           }
           <div class="form__control">
             <input

@@ -4,7 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BackendErrorMessageComponent } from '../../shared/components/backend-error-message/backend-error-message.component';
 import { Subscription, combineLatest, filter } from 'rxjs';
-import { selectIsSubmitting, selectValidationErrors } from './store/reducerts';
+import { selectIsSubmitting, selectValidationErrors } from './store/reducers';
 import { selectCurrentUser } from '../../auth/store/reducers';
 import { CurrentUserInterface } from '../../shared/types/currentUser.interface';
 import { authActions } from '../../auth/store/actions';

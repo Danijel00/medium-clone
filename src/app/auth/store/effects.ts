@@ -146,6 +146,26 @@ export const updateCurrentUserEffect = createEffect((
   )
 }, { functional: true })
 
+// Redirect after successful user update //
+export const redirectAfterUserUpdateEffect = createEffect((
+  actions$ = inject(Actions),
+  authService = inject(AuthService),
+  router = inject(Router),
+) => {
+  return actions$.pipe(
+    ofType(authActions.updateCurrentUserSuccess),
+    switchMap(() =>
+      authService.getCurrentUser().pipe(
+        tap((currentUser: CurrentUserInterface) => {
+          if (currentUser) {
+            router.navigateByUrl(`profiles/${currentUser.username}`);
+          }
+        }),
+      )
+    )
+  )
+}, { functional: true, dispatch: false })
+
 export const logoutEffect = createEffect((
   actions$ = inject(Actions),
   router = inject(Router),
